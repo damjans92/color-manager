@@ -1,4 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Luckiest+Guy&family=Rubik+Lines&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-luckiest: "Luckiest Guy", serif;
+  --font-audiowide: "Audiowide", serif;
+}
 
 body {
   margin: 0;
@@ -6,17 +12,4 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
