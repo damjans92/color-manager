@@ -6,6 +6,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 const ColorForm = () => {
   const [hex, setHex] = useState("#000000");
   const [name, setName] = useState("");
+  const [showColorForm, setShowColorForm] = useState(false);
+
   const {
     register,
     handleSubmit,
