@@ -2,9 +2,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { Color } from "../types";
 import { useEffect } from "react";
-import { AppDispatch } from "../redux/store";
-import { useDispatch } from "react-redux";
-import { addColor, updateColor } from "../redux/slices/colorSlice";
+import { AppDispatch, RootState } from "../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { addColor, updateColor } from "../redux/thunks/colorThunks";
 
 type ColorModalProps = {
   isOpen: boolean;
@@ -14,6 +15,7 @@ type ColorModalProps = {
 
 const ColorModal = ({ isOpen, onClose, selectedColor }: ColorModalProps) => {
   const dispatch: AppDispatch = useDispatch();
+  const { error } = useSelector((state: RootState) => state.colors);
 
   const {
     register,
@@ -40,9 +42,7 @@ const ColorModal = ({ isOpen, onClose, selectedColor }: ColorModalProps) => {
       onClose();
     } else {
       dispatch(addColor({ id: uuidv4(), colorName, hexCode }));
-
       onClose();
-      console.log(data);
     }
     reset({ colorName: "", hexCode: "" });
   };
@@ -58,8 +58,18 @@ const ColorModal = ({ isOpen, onClose, selectedColor }: ColorModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-20 bg-blue-900/50 backdrop-blur-md flex justify-center items-center">
-      <div className="bg-white p-6 rounded-2xl shadow-2xl w-96 max-w-lg">
+    <motion.div
+      className="fixed inset-0 z-20 bg-blue-900/50 backdrop-blur-md flex justify-center items-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3 } }}
+      exit={{ opacity: 0, transition: { duration: 0.3 } }}
+    >
+      <motion.div
+        className="bg-white p-6 rounded-2xl shadow-2xl w-96 max-w-lg"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1, transition: { duration: 0.3 } }}
+        exit={{ scale: 0.8, transition: { duration: 0.3 } }}
+      >
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2 className="text-2xl text-gray-600 mb-4 text-center">
             {selectedColor ? "Edit Color" : "Add New Color"}
@@ -112,8 +122,12 @@ const ColorModal = ({ isOpen, onClose, selectedColor }: ColorModalProps) => {
                 type="color"
                 value={hexCodeValue}
                 onChange={(e) => setValue("hexCode", e.target.value.trim())}
-                className="w-full h-12 border-2 border-gray-300 rounded-full shadow-sm cursor-pointer"
+                className="w-full h-12 border-2 rounded-full shadow-sm cursor-pointer"
+                aria-label="Click to choose color"
               />
+              <p className="text-center text-sm text-gray-500 mt-1">
+                Click here to choose color
+              </p>
             </div>
 
             {/* Buttons */}
@@ -133,8 +147,8 @@ const ColorModal = ({ isOpen, onClose, selectedColor }: ColorModalProps) => {
             </div>
           </div>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

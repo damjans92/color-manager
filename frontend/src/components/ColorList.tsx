@@ -4,35 +4,28 @@ import ColorModal from "./ColorModal";
 import { Color } from "../types";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
-import { fetchColors, deleteColor } from "../redux/slices/colorSlice";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { deleteColor, fetchColors } from "../redux/thunks/colorThunks";
 
 const ColorList = () => {
   const dispatch: AppDispatch = useDispatch();
-  const { colors, loading, error } = useSelector(
+  const { colors, loading, error, searchQuery } = useSelector(
     (state: RootState) => state.colors
   );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<Color | null>(null);
 
-  //   const fetchColors = async () => {
-  //     try {
-  //       const response = await fetch("http://localhost:5000/api/colors");
-  //       const data = await response.json();
-  //       setColors(data);
-  //     } catch (error) {}
-  //   };
-
-  //   const deleteColor = async (id: string) => {
-  //     try {
-  //       await fetch(`http://localhost:5000/api/colors/${id}`, {
-  //         method: "DELETE",
-  //       });
-  //       setColors(colors.filter((color) => color.id !== id));
-  //       setIsModalOpen(false);
-  //       setSelectedColor(null);
-  //     } catch (error) {}
-  //   };
+  const filteredColors = colors
+    .filter(
+      (colors) =>
+        colors.colorName
+          .toLowerCase()
+          .includes((searchQuery ?? "").toLowerCase()) ||
+        colors.hexCode.toLowerCase().includes((searchQuery ?? "").toLowerCase())
+    )
+    .reverse();
 
   useEffect(() => {
     dispatch(fetchColors());
@@ -42,26 +35,73 @@ const ColorList = () => {
     dispatch(deleteColor(id));
   };
 
-  return (
-    <div className="flex flex-wrap justify-start gap-4 p-4 max-w-[1280px]">
-      {loading && <p>Loading colors...</p>}
-      {error && <p className="text-red-500">{error}</p>}
-      {!loading &&
-        colors.map((color) => (
-          <ColorItem
-            key={color.id}
-            color={color}
-            setIsModalOpen={setIsModalOpen}
-            setSelectedColor={setSelectedColor}
-            onDelete={handleDeleteColor}
-          />
-        ))}
+  if (error) {
+    toast.error(error);
+  }
 
-      <ColorModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        selectedColor={selectedColor}
-      />
+  return (
+    <div className="sm:min-w-[500px]  max-h-[500px] w-full overflow-y-scroll mx-auto p-6 border border-gray-300 rounded-lg inset-shadow">
+      <div className="flex flex-wrap justify-start gap-4">
+        {loading && (
+          <div className="flex justify-center w-full">
+            <svg
+              className="w-32 h-32 text-blue-600 animate-spin"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v8H4z"
+              ></path>
+            </svg>
+          </div>
+        )}
+        {error && <p className="text-red-500">{error}</p>}
+        {!loading &&
+          filteredColors.map((color) => (
+            <motion.div
+              key={color.id}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.3,
+                  },
+                },
+              }}
+            >
+              <ColorItem
+                color={color}
+                setIsModalOpen={setIsModalOpen}
+                setSelectedColor={setSelectedColor}
+                onDelete={handleDeleteColor}
+              />
+            </motion.div>
+          ))}
+        {!loading && filteredColors?.length === 0 && (
+          <p className="text-center w-full text-2xl text-gray-600">
+            No colors found
+          </p>
+        )}
+        <ColorModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          selectedColor={selectedColor}
+        />
+      </div>
     </div>
   );
 };

@@ -1,92 +1,36 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
+import { createSlice } from "@reduxjs/toolkit";
 
 import { Color } from "../../types";
+import { toast } from "react-toastify";
+import {
+  addColor,
+  deleteColor,
+  fetchColors,
+  updateColor,
+} from "../thunks/colorThunks";
 
 interface ColorState {
   colors: Color[];
   loading: boolean;
   error: string | null;
+  searchQuery: string | null;
 }
 
 const initialState: ColorState = {
   colors: [],
   loading: false,
   error: null,
+  searchQuery: "",
 };
-
-export const fetchColors = createAsyncThunk("colors/fetchColors", async () => {
-  try {
-    const response = await fetch("http://localhost:5000/api/colors");
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw new Error("Error occurred while fetching colors");
-  }
-});
-
-export const addColor = createAsyncThunk(
-  "colors/addColor",
-  async (color: Color) => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/colors`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: uuidv4(),
-          colorName: color.colorName,
-          hexCode: color.hexCode,
-        }),
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      throw new Error("Error occurred while adding a color");
-    }
-  }
-);
-
-export const deleteColor = createAsyncThunk(
-  "colors/deleteColor",
-  async (id: string) => {
-    try {
-      await fetch(`http://localhost:5000/api/colors/${id}`, {
-        method: "DELETE",
-      });
-      return id;
-    } catch (error) {
-      throw new Error("Error occurred while deleting a color");
-    }
-  }
-);
-
-export const updateColor = createAsyncThunk(
-  "colors/updateColor",
-  async (color: Color) => {
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/colors/${color.id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            colorName: color.colorName,
-            hexCode: color.hexCode,
-          }),
-        }
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      throw new Error("Error occurred while updating a color");
-    }
-  }
-);
 
 const colorSlice = createSlice({
   name: "colors",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Fetch all colors
@@ -102,6 +46,7 @@ const colorSlice = createSlice({
       .addCase(fetchColors.rejected, (state) => {
         state.loading = false;
         state.error = "Failed to fetch colors";
+        toast.error(state.error);
       })
 
       // Add new color
@@ -112,11 +57,12 @@ const colorSlice = createSlice({
       .addCase(addColor.fulfilled, (state, action) => {
         state.colors.push(action.payload);
         state.loading = false;
-        state.error = null;
+        toast.success("Color added successfully!");
       })
       .addCase(addColor.rejected, (state) => {
         state.loading = false;
         state.error = "Failed to add color";
+        toast.error(state.error);
       })
 
       // Update color
@@ -125,7 +71,6 @@ const colorSlice = createSlice({
         state.error = null;
       })
       .addCase(updateColor.fulfilled, (state, action) => {
-        console.log("Updating color:", action.payload);
         const index = state.colors.findIndex(
           (color) => color.id === action.payload.id
         );
@@ -133,10 +78,12 @@ const colorSlice = createSlice({
           state.colors[index] = action.payload;
         }
         state.loading = false;
+        toast.success("Color updated successfully!");
       })
       .addCase(updateColor.rejected, (state) => {
         state.loading = false;
         state.error = "Failed to update color";
+        toast.error(state.error);
       })
 
       // Delete color
@@ -149,13 +96,15 @@ const colorSlice = createSlice({
           (color) => color.id !== action.payload
         );
         state.loading = false;
-        state.error = null;
+        toast.success("Color deleted successfully!");
       })
       .addCase(deleteColor.rejected, (state) => {
         state.loading = false;
         state.error = "Failed to delete color";
+        toast.error(state.error);
       });
   },
 });
 
+export const { setSearchQuery } = colorSlice.actions;
 export default colorSlice.reducer;

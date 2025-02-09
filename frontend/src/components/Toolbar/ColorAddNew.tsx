@@ -14,23 +14,15 @@ const ColorAddNew = () => {
           <span className="text-2xl mr-2">+</span> Add Color
           <span className="absolute inset-0 bg-white opacity-20 rounded-full transition-all duration-300 scale-0 group-hover:scale-100"></span>
         </button>
-
-        {/* Dropdown for Color Groups */}
-        {/* <select
-          value={colorGroup}
-          onChange={(e) => setColorGroup(e.target.value)}
-          className="border-2 border-gray-300 rounded px-4 py-2"
-        >
-          <option value="blue">Blue</option>
-          <option value="red">Red</option>
-          <option value="yellow">Yellow</option>
-          <option value="green">Green</option>
-        </select> */}
       </div>
 
-      {/* Form for Adding Color */}
-
       <ColorModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="fixed z-20 bottom-8 right-8 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-blue-700 text-white w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-xl flex items-center justify-center text-2xl  transform hover:scale-105 transition-all"
+      >
+        <div className="text-5xl mb-2">+</div>
+      </button>
     </div>
   );
 };
