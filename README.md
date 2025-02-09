@@ -10,6 +10,12 @@ This is a simple single-page application (SPA) built with React for managing col
 
 ## Getting Started
 
+1. Clone the repository
+
+```bash
+git clone https://github.com/damjans92/color-manager.git
+```
+
 ### Backend Setup
 
 1. Navigate to the backend directory:
