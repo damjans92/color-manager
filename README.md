@@ -1,12 +1,27 @@
 # Color Manager App
 
-This is a simple single-page application (SPA) built with React for managing color definitions. It allows users to view, add, delete, and filter colors, each with a name and hexadecimal value.
+This is a single-page application (SPA) built with React for managing color definitions. It allows users to view, add, delete, and filter colors, each with a name and hexadecimal value.
 
 ## Technologies Used
 
-- **Frontend:** React, Redux Toolkit, React Hook Form, Tailwind CSS
-- **Backend:** Node.js, Express.js
-- **Data Storage:** JSON file
+### Frontend
+
+- React (Vite)
+- Redux Toolkit
+- React Hook Form
+- Tailwind CSS
+- ESLint (code quality)
+- Prettier (code formatting)
+
+### Backend
+
+- Node.js
+- Express.js
+- Postman (API testing)
+
+### Data Storage
+
+- JSON file
 
 ## Getting Started
 

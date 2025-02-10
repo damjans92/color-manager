@@ -1,4 +1,3 @@
-import "./App.css";
 import ColorFilter from "./components/Toolbar/ColorFilter";
 import ColorList from "./components/ColorList";
 import Header from "./components/Header";

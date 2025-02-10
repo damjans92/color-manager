@@ -2,8 +2,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { Color } from "../types";
 import { useEffect } from "react";
-import { AppDispatch, RootState } from "../redux/store";
-import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { addColor, updateColor } from "../redux/thunks/colorThunks";
 
@@ -15,7 +15,6 @@ type ColorModalProps = {
 
 const ColorModal = ({ isOpen, onClose, selectedColor }: ColorModalProps) => {
   const dispatch: AppDispatch = useDispatch();
-  const { error } = useSelector((state: RootState) => state.colors);
 
   const {
     register,
@@ -139,6 +138,7 @@ const ColorModal = ({ isOpen, onClose, selectedColor }: ColorModalProps) => {
                 Save Color
               </button>
               <button
+                type="button"
                 onClick={handleCloseModal}
                 className="text-gray-500 hover:text-red-600 text-sm font-semibold transition-all duration-300"
               >
