@@ -12,6 +12,7 @@ This is a single-page application (SPA) built with React for managing color defi
 - Tailwind CSS
 - ESLint (code quality)
 - Prettier (code formatting)
+- React Testing Library/Jest (component testing)
 
 ### Backend
 
