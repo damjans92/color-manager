@@ -1,67 +1,152 @@
 [
   {
-    "id": "2ff2f22ff2",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d4ef",
+    "colorName": "AliceBlue",
+    "hexCode": "#F0F8FF"
+  },
+  {
+    "id": "a9c2b3d5-e6f0-4178-9234-567890abcdef",
+    "colorName": "AntiqueWhite",
+    "hexCode": "#FAEBD7"
+  },
+  {
+    "id": "b0d3e4f5-1a2b-4c8d-9e01-234567890abc",
+    "colorName": "Azure",
+    "hexCode": "#F0FFFF"
+  },
+  {
+    "id": "c7e8f90a-2b3c-4d9e-a0b1-34567890abcd",
+    "colorName": "Beige",
+    "hexCode": "#F5F5DC"
+  },
+  {
+    "id": "d8fa0b1c-3d4e-4e0f-b1c2-4567890abcde",
+    "colorName": "Bisque",
+    "hexCode": "#FFE4C4"
+  },
+  {
+    "id": "e91b2c3d-4f50-4f1a-c2d3-567890abcdef",
+    "colorName": "Black",
+    "hexCode": "#000000"
+  },
+  {
+    "id": "fa2c3d4e-5061-452b-d3e4-67890abcdef0",
+    "colorName": "BlanchedAlmond",
+    "hexCode": "#FFEBCD"
+  },
+  {
+    "id": "0b3d4e5f-6172-4c3c-e4f5-7890abcdef12",
     "colorName": "Blue",
-    "hexCode": "#0d208B"
+    "hexCode": "#0000FF"
   },
   {
-    "id": "267d79af-bca8-4d8a-8eff-b3195096d094",
-    "colorName": "limeboja23rrr",
-    "hexCode": "#74e800"
+    "id": "1c4e5f60-7283-4d4d-f506-890abcdef123",
+    "colorName": "BlueViolet",
+    "hexCode": "#9A2BEB"
   },
   {
-    "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+    "id": "2d5f6071-8394-4e5e-0617-90abcdef1234",
+    "colorName": "Brown",
+    "hexCode": "#A52A2A"
+  },
+  {
+    "id": "3e607182-94a5-4f6f-1728-0abcdef12345",
+    "colorName": "BurlyWood",
+    "hexCode": "#DEB887"
+  },
+  {
+    "id": "4f718293-a5b6-4070-2839-abcdef123456",
+    "colorName": "CadetBlue",
+    "hexCode": "#5F9EA0"
+  },
+  {
+    "id": "508293a4-b6c7-4181-394a-bcdef1234567",
+    "colorName": "Chartreuse",
+    "hexCode": "#7FFF00"
+  },
+  {
+    "id": "6193a4b5-c7d8-4292-4a5b-cdef12345678",
+    "colorName": "Chocolate",
+    "hexCode": "#D2691E"
+  },
+  {
+    "id": "72a4b5c6-d8e9-43a3-5b6c-def123456789",
+    "colorName": "Coral",
+    "hexCode": "#FF7F50"
+  },
+  {
+    "id": "83b5c6d7-e9fa-44b4-6c7d-ef1234567890",
+    "colorName": "CornflowerBlue",
+    "hexCode": "#6495ED"
+  },
+  {
+    "id": "94c6d7e8-fa0b-45c5-7d8e-f1234567890a",
+    "colorName": "Cornsilk",
+    "hexCode": "#FFF8DC"
+  },
+  {
+    "id": "a5d7e8f9-0b1c-46d6-8e9f-1234567890ab",
     "colorName": "Crimson",
     "hexCode": "#DC143C"
   },
   {
-    "id": "1a2b3c4d-5e6f-7081-92a3-b4c5d6e7f8",
-    "colorName": "MediumSlateBlue",
-    "hexCode": "#7B68EE"
+    "id": "b6e8f90a-1c2d-47e7-9f01-234567890abc",
+    "colorName": "Cyan",
+    "hexCode": "#00FFFF"
   },
   {
-    "id": "bcdefa01-2345-6789-abcd-ef0123456789",
-    "colorName": "Sienna",
-    "hexCode": "#A0522D"
+    "id": "c7fa0b1c-2d3e-48f8-a0b1-34567890abcd",
+    "colorName": "DarkBlue",
+    "hexCode": "#00008B"
   },
   {
-    "id": "98765432-1098-7654-3210-987654321098",
-    "colorName": "Violet",
-    "hexCode": "#EE82EE"
+    "id": "d81b2c3d-3e4f-4909-b1c2-4567890abcde",
+    "colorName": "DarkCyan",
+    "hexCode": "#008B8B"
   },
   {
-    "id": "11223344-5566-7788-9900-aabbccddeeff",
-    "colorName": "Indigo",
-    "hexCode": "#4B0082"
+    "id": "e92c3d4e-4f50-4a1a-c2d3-567890abcdef",
+    "colorName": "DarkGoldenrod",
+    "hexCode": "#B8860B"
   },
   {
-    "id": "00112233-4455-6677-8899-aabbccddeeff",
-    "colorName": "Peach",
-    "hexCode": "#FFDAB9"
+    "id": "fa3d4e5f-5061-4b2b-d3e4-67890abcdef0",
+    "colorName": "DarkGray",
+    "hexCode": "#A9A9A9"
   },
   {
-    "id": "abcdef01-2345-6789-abcd-ef0123456789",
-    "colorName": "Silver",
-    "hexCode": "#C0C0C0"
+    "id": "0b4e5f60-6172-4c3c-e4f5-7890abcdef12",
+    "colorName": "DarkGreen",
+    "hexCode": "#006400"
   },
   {
-    "id": "2468ace0-1357-9bdf-2468-ace02468ace0",
-    "colorName": "Lavender",
-    "hexCode": "#E6E6FA"
+    "id": "1c5f6071-7283-4d4d-f506-890abcdef123",
+    "colorName": "DarkKhaki",
+    "hexCode": "#BDB76B"
   },
   {
-    "id": "e7d442e7-2eb1-4ed2-aad6-cfc0b5a2e1b0",
-    "colorName": "zelena",
-    "hexCode": "#46e85a"
+    "id": "2d607182-8394-4e5e-0617-90abcdef1234",
+    "colorName": "DarkMagenta",
+    "hexCode": "#8B008B"
   },
   {
-    "id": "8db32902-b77b-463a-877b-43f7f8708318",
-    "colorName": "novaboja236",
-    "hexCode": "#5561b0"
+    "id": "3e718293-94a5-4f6f-1728-0abcdef12345",
+    "colorName": "DarkOliveGreen",
+    "hexCode": "#556B2F"
   },
   {
-    "id": "30f961d5-0cc1-4e32-bd00-6896cb5d3c7d",
-    "colorName": "Green3",
-    "hexCode": "#1f7e30"
+    "id": "4f8293a4-a5b6-4070-2839-abcdef123456",
+    "colorName": "DarkOrange",
+    "hexCode": "#FF8C00"
+  },
+  {
+    "id": "5093a4b5-b6c7-4181-394a-bcdef1234567",
+    "colorName": "DarkOrchid",
+    "hexCode": "#9932CC"
+  },
+  {
+    "id": "61a4b5c6-c7d8-4292-4a5b-cdef12345678",
+    "colorName": "DarkRed",
+    "hexCode": "#8B0000"
   }
 ]
