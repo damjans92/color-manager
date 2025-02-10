@@ -1,6 +1,6 @@
 # Color Manager App
 
-This is a single-page application (SPA) built with React for managing color definitions. It allows users to view, add, delete, and filter colors, each with a name and hexadecimal value.
+This is a single-page application (SPA) built with React for managing color definitions. It allows users to view, add, edit, delete, and filter colors, each with a name and hexadecimal value.
 
 ## Technologies Used
 
